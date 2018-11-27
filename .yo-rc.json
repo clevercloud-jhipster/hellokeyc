@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "enableHibernateCache": true,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "jhiPrefix": "keyc",
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "messageBroker": false,
+    "nativeLanguage": "en",
+    "packageName": "io.epsil.hellokeyc",
+    "packageFolder": "io/epsil/hellokeyc",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "serviceDiscoveryType": false,
+    "skipClient": false,
+    "skipServer": false,
+    "testFrameworks": [
+      "protractor",
+      "gatling"
+    ],
+    "websocket": false,
+    "applicationType": "monolith",
+    "authenticationType": "oauth2",
+    "baseName": "hellokeyc",
+    "buildTool": "maven",
+    "cacheProvider": "ehcache",
+    "clientFramework": "angularX",
+    "clientPackageManager": "npm",
+    "jhipsterVersion": "5.7.0",
+    "skipUserManagement": true,
+    "serverPort": "8080",
+    "useSass": true,
+    "otherModules": []
+  },
+  "entities": [
+    "Country"
+  ]
+}

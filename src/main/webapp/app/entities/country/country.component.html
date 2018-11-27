@@ -1,0 +1,86 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="hellokeycApp.country.home.title">Countries</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-country" [routerLink]="['/country/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="hellokeycApp.country.home.createLabel">
+            Create new Country
+            </span>
+        </button>
+    </h2>
+    <keyc-alert></keyc-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="countries">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="iso2"><span jhiTranslate="hellokeycApp.country.iso2">Iso 2</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="iso3"><span jhiTranslate="hellokeycApp.country.iso3">Iso 3</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="m49"><span jhiTranslate="hellokeycApp.country.m49">M 49</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span jhiTranslate="hellokeycApp.country.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="officialNameEn"><span jhiTranslate="hellokeycApp.country.officialNameEn">Official Name En</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="officialNameFr"><span jhiTranslate="hellokeycApp.country.officialNameFr">Official Name Fr</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dial"><span jhiTranslate="hellokeycApp.country.dial">Dial</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="tld"><span jhiTranslate="hellokeycApp.country.tld">Tld</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="flag32"><span jhiTranslate="hellokeycApp.country.flag32">Flag 32</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="flag128"><span jhiTranslate="hellokeycApp.country.flag128">Flag 128</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="latitude"><span jhiTranslate="hellokeycApp.country.latitude">Latitude</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="longitude"><span jhiTranslate="hellokeycApp.country.longitude">Longitude</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="zoom"><span jhiTranslate="hellokeycApp.country.zoom">Zoom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let country of countries ;trackBy: trackId">
+                <td><a [routerLink]="['/country', country.id, 'view' ]">{{country.id}}</a></td>
+                <td>{{country.iso2}}</td>
+                <td>{{country.iso3}}</td>
+                <td>{{country.m49}}</td>
+                <td>{{country.name}}</td>
+                <td>{{country.officialNameEn}}</td>
+                <td>{{country.officialNameFr}}</td>
+                <td>{{country.dial}}</td>
+                <td>{{country.tld}}</td>
+                <td>{{country.flag32}}</td>
+                <td>{{country.flag128}}</td>
+                <td>{{country.latitude}}</td>
+                <td>{{country.longitude}}</td>
+                <td>{{country.zoom}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/country', country.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/country', country.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'country/'+ country.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="countries && countries.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

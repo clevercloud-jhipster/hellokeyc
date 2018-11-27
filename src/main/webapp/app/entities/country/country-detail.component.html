@@ -1,0 +1,75 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="country">
+            <h2><span jhiTranslate="hellokeycApp.country.detail.title">Country</span> {{country.id}}</h2>
+            <hr>
+            <keyc-alert-error></keyc-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="hellokeycApp.country.iso2">Iso 2</span></dt>
+                <dd>
+                    <span>{{country.iso2}}</span>
+                </dd>
+                <dt><span jhiTranslate="hellokeycApp.country.iso3">Iso 3</span></dt>
+                <dd>
+                    <span>{{country.iso3}}</span>
+                </dd>
+                <dt><span jhiTranslate="hellokeycApp.country.m49">M 49</span></dt>
+                <dd>
+                    <span>{{country.m49}}</span>
+                </dd>
+                <dt><span jhiTranslate="hellokeycApp.country.name">Name</span></dt>
+                <dd>
+                    <span>{{country.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="hellokeycApp.country.officialNameEn">Official Name En</span></dt>
+                <dd>
+                    <span>{{country.officialNameEn}}</span>
+                </dd>
+                <dt><span jhiTranslate="hellokeycApp.country.officialNameFr">Official Name Fr</span></dt>
+                <dd>
+                    <span>{{country.officialNameFr}}</span>
+                </dd>
+                <dt><span jhiTranslate="hellokeycApp.country.dial">Dial</span></dt>
+                <dd>
+                    <span>{{country.dial}}</span>
+                </dd>
+                <dt><span jhiTranslate="hellokeycApp.country.tld">Tld</span></dt>
+                <dd>
+                    <span>{{country.tld}}</span>
+                </dd>
+                <dt><span jhiTranslate="hellokeycApp.country.flag32">Flag 32</span></dt>
+                <dd>
+                    <span>{{country.flag32}}</span>
+                </dd>
+                <dt><span jhiTranslate="hellokeycApp.country.flag128">Flag 128</span></dt>
+                <dd>
+                    <span>{{country.flag128}}</span>
+                </dd>
+                <dt><span jhiTranslate="hellokeycApp.country.latitude">Latitude</span></dt>
+                <dd>
+                    <span>{{country.latitude}}</span>
+                </dd>
+                <dt><span jhiTranslate="hellokeycApp.country.longitude">Longitude</span></dt>
+                <dd>
+                    <span>{{country.longitude}}</span>
+                </dd>
+                <dt><span jhiTranslate="hellokeycApp.country.zoom">Zoom</span></dt>
+                <dd>
+                    <span>{{country.zoom}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/country', country.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
